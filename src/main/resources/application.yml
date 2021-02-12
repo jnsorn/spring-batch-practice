@@ -1,6 +1,12 @@
 spring:
   profiles:
     active: local
+
+  # Spring Batch가 실행될 때 Program arguments로 job.name값이 넘어오면 해당 값과 일치하는 Job만 실행
+  batch:
+    job:
+      names: ${job.name:NONE} # job.name이 있으면 job.name을 할당하고 없으면 NONE 할당
+      # 이 때 Spring Batch에 NONE이 할당되면 어떤 배치도 실행하지 않겠다는 의미!
 ---
 spring:
   config:
